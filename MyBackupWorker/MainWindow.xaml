@@ -1,0 +1,34 @@
+﻿<Window x:Class="MyBackupWorker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyBackupWorker"
+        mc:Ignorable="d"
+        Title="Ihr Backup wird durchgeführt" Height="160" Width="500"
+		BorderBrush="Black" BorderThickness="0 0 0 0" WindowStyle="None"
+		Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
+		Icon="Images/Backup.png">
+    <Grid Style="{StaticResource Stretch}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource MainButton}" Content="X" ToolTip="Schließen" Click="Button_Click"></Button>
+
+        <TextBlock Grid.Row="1" Text="Ihre Daten werden gesichert...." Style="{StaticResource TitleLeftM5}"></TextBlock>
+        <TextBlock x:Name="lblPercent" Grid.Row="1" Grid.Column="1" Text="0 %" Style="{StaticResource TitleRightM5}"></TextBlock>
+
+        <StackPanel Grid.Row="2"  Grid.ColumnSpan="2" Orientation="Vertical" Style="{StaticResource StretchM5}">
+            <TextBlock x:Name="lblFile" Text="Dateien werden abgesichert:"></TextBlock>
+            <TextBlock x:Name="lblCurrent" Text="..."></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBackupSettings", "MyBackup\MyBackupSettings.csproj", "{14FAAAF2-E9A2-4AAD-87BE-E979CA0EC8F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "..\Messages\Messages.csproj", "{6FE4EED8-545D-499B-9C38-EBA11905C051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBackupWorker", "MyBackupWorker\MyBackupWorker.csproj", "{A4395E98-F237-44FD-A3BC-CA8D679BCF09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBackupModel", "MyBackupModel\MyBackupModel.csproj", "{3E835F10-7A19-4E99-9578-60199251DF47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "..\Log\Log.csproj", "{80DA5D28-D260-4262-A496-CB35F506B5E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Email", "..\Email\Email.csproj", "{D37F4A4B-0AED-4FE5-8B69-859EEB6E551E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupBackup", "SetupBackup\SetupBackup.vdproj", "{D3C9DA37-2B83-4BC6-AC2D-4F107E57B35D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14FAAAF2-E9A2-4AAD-87BE-E979CA0EC8F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FAAAF2-E9A2-4AAD-87BE-E979CA0EC8F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FAAAF2-E9A2-4AAD-87BE-E979CA0EC8F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FAAAF2-E9A2-4AAD-87BE-E979CA0EC8F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FE4EED8-545D-499B-9C38-EBA11905C051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FE4EED8-545D-499B-9C38-EBA11905C051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FE4EED8-545D-499B-9C38-EBA11905C051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FE4EED8-545D-499B-9C38-EBA11905C051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4395E98-F237-44FD-A3BC-CA8D679BCF09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4395E98-F237-44FD-A3BC-CA8D679BCF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4395E98-F237-44FD-A3BC-CA8D679BCF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4395E98-F237-44FD-A3BC-CA8D679BCF09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E835F10-7A19-4E99-9578-60199251DF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E835F10-7A19-4E99-9578-60199251DF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E835F10-7A19-4E99-9578-60199251DF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E835F10-7A19-4E99-9578-60199251DF47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DA5D28-D260-4262-A496-CB35F506B5E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DA5D28-D260-4262-A496-CB35F506B5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DA5D28-D260-4262-A496-CB35F506B5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DA5D28-D260-4262-A496-CB35F506B5E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D37F4A4B-0AED-4FE5-8B69-859EEB6E551E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D37F4A4B-0AED-4FE5-8B69-859EEB6E551E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D37F4A4B-0AED-4FE5-8B69-859EEB6E551E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D37F4A4B-0AED-4FE5-8B69-859EEB6E551E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C9DA37-2B83-4BC6-AC2D-4F107E57B35D}.Debug|Any CPU.ActiveCfg = Debug
+		{D3C9DA37-2B83-4BC6-AC2D-4F107E57B35D}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://terrygardner.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = MyBackupModel\\MyBackupModel.csproj
+		SccProjectName0 = MyBackupModel
+		SccLocalPath0 = MyBackupModel
+		SccProjectUniqueName1 = MyBackup\\MyBackupSettings.csproj
+		SccProjectName1 = MyBackup
+		SccLocalPath1 = MyBackup
+		SccProjectUniqueName2 = MyBackupWorker\\MyBackupWorker.csproj
+		SccProjectName2 = MyBackupWorker
+		SccLocalPath2 = MyBackupWorker
+		SccLocalPath3 = .
+		SccProjectUniqueName4 = ..\\Email\\Email.csproj
+		SccProjectName4 = ../Email
+		SccLocalPath4 = ..\\Email
+		SccProjectUniqueName5 = ..\\Log\\Log.csproj
+		SccProjectName5 = ../Log
+		SccLocalPath5 = ..\\Log
+		SccProjectUniqueName6 = ..\\Messages\\Messages.csproj
+		SccProjectName6 = ../Messages
+		SccLocalPath6 = ..\\Messages
+		SccProjectUniqueName7 = SetupBackup\\SetupBackup.vdproj
+		SccProjectName7 = SetupBackup
+		SccLocalPath7 = SetupBackup
+	EndGlobalSection
+EndGlobal

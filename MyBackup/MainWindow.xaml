@@ -1,0 +1,197 @@
+﻿<Window x:Class="MyBackupSettings.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:MyBackupSettings"
+		xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="MyBackup - Einstellungen" MinHeight="700" MinWidth="1000" Left="0" Top="0"
+		Height="700" Width="1000" 
+		Loaded="Window_Loaded"
+		SizeChanged="Window_SizeChanged"
+		Icon="Images/Backup.png">
+	<Grid Style="{StaticResource Stretch}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" MinWidth="200"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="Auto" MinWidth="300"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<WindowsFormsHost x:Name="wfhCon" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="4" Visibility="Collapsed" Style="{StaticResource Stretch}">
+			<wf:WebBrowser Name="wbGoogle"></wf:WebBrowser>
+		</WindowsFormsHost>
+		<!-- Buttons -->
+		<Border Grid.Row="0" Grid.Column="0" Background="Black" Grid.ColumnSpan="3"></Border>
+		<TextBlock x:Name="lblBackupCapacity"  Grid.Row="0" Grid.Column="0" Style="{StaticResource TitleWhiteLeft}"></TextBlock>
+		<StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource Stretch}" Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button Width="220" Content="Einstellungen speichern" Click="ButtonDone_Click"></Button>
+			<Button Width="200" Content="Jetzt Daten absichern" ToolTip="Hiermit wird die Sicherung sofort durchgeführt." Click="Manual_Click" Margin="0,0,5,5" VerticalAlignment="Bottom"></Button>
+		</StackPanel>
+
+		<!-- Titles -->
+		<TextBlock Style="{StaticResource Title}" Grid.Row="1" Grid.Column="0" Text="Auswählen"></TextBlock>
+		<TextBlock Style="{StaticResource Title}" Grid.Row="1" Grid.Column="1" Text="Was"></TextBlock>
+		<TextBlock Style="{StaticResource Title}" Grid.Row="1" Grid.Column="2" Text="Wann"></TextBlock>
+
+		<Grid Grid.Row="2" Grid.Column="0" Style="{StaticResource Stretch}" Grid.RowSpan="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<TreeView x:Name="tvBackup" Grid.Row="0" Grid.Column="0" Style="{StaticResource StretchM5}" 
+				  BorderThickness="0,0,0,0">
+
+				<TreeView.ItemContainerStyle>
+					<Style TargetType="{x:Type TreeViewItem}">
+						<!-- We have to select the item which is right-clicked on -->
+						<!--<EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown"/>-->
+						<!--<EventSetter Event="TreeViewItem.DragOver" Handler="TreeView_DragOver" />-->
+						<!--<EventSetter Event="TreeViewItem.Drop" Handler="TreeView_Drop" />-->
+						<EventSetter Event="TreeViewItem.MouseMove" Handler="TreeView_MouseMove" />
+					</Style>
+				</TreeView.ItemContainerStyle>
+			</TreeView>
+
+			<StackPanel Grid.Row="1" Style="{StaticResource Stretch}">
+				<Grid Style="{StaticResource Stretch}">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition Height="Auto"></RowDefinition>
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="120px"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Text="Google" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource Title}" ToolTip="Eine Erinnerung wird am Tag vor dem Sicherungstermin eingestellt (erst mit der nächsten Version möglich)"></TextBlock>
+
+					<TextBlock Grid.Row="1" Grid.Column="0" Text="Client-ID" Margin="10,0,0,0" VerticalAlignment="Center" ToolTip="erst mit der nächsten Version möglich"></TextBlock>
+					<TextBox Grid.Row="1" Grid.Column="1" x:Name="tbxGoogleUser" Style="{StaticResource TargetPath}" Text="" ToolTip="erst mit der nächsten Version möglich"></TextBox>
+					<!--GotFocus="tbxGoogleUser_GotFocus"-->
+
+					<TextBlock Grid.Row="2" Grid.Column="0" Text="Secret" Margin="10,0,0,0" VerticalAlignment="Center" ToolTip="erst mit der nächsten Version möglich"></TextBlock>
+					<TextBox Grid.Row="2" Grid.Column="1" x:Name="tbxGooglePassword" Style="{StaticResource TargetPath}" Text="" ToolTip="erst mit der nächsten Version möglich"></TextBox>
+					<!--GotFocus="tbxGoogleUser_GotFocus"-->
+				</Grid>
+			</StackPanel>
+		</Grid>
+
+		<!-- AddedFolders -->
+		<Grid Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Style="{StaticResource Stretch}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<ScrollViewer Grid.Row="0" Style="{StaticResource AddFolderScroll}">
+				<StackPanel x:Name="spAddedFolders" Style="{StaticResource Stretch}"
+						DragOver="StackPanel_DragOver"
+						Drop="TreeView_Drop"
+						DragEnter="spAddedFolders_DragEnter"
+						></StackPanel>
+			</ScrollViewer>
+
+			<StackPanel Grid.Row="1" Style="{StaticResource Stretch}" Orientation="Vertical">
+				<TextBlock Text="E-Mail" Style="{StaticResource Title}" ToolTip="Eine Mitteilung wird vor und nach der Sicherung verschickt"></TextBlock>
+				<TextBox x:Name="tbxEmail" Style="{StaticResource TargetPath}" Text=""></TextBox>
+			</StackPanel>
+		</Grid>
+
+		<!-- When -->
+		<Grid Grid.Row="2" Grid.Column="2" Style="{StaticResource Stretch}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<StackPanel Style="{StaticResource StretchM10}">
+				<Border Style="{StaticResource NoBorderRdb}">
+					<RadioButton x:Name="rdbMonthBegin" GroupName="When">
+						<TextBlock Text="Monatsanfang"></TextBlock>
+					</RadioButton>
+				</Border>
+
+				<Border Style="{StaticResource NoBorderRdb}">
+					<RadioButton x:Name="rdbMonthEnd" GroupName="When">
+						<TextBlock Text="Monatsende"></TextBlock>
+					</RadioButton>
+				</Border>
+			</StackPanel>
+
+			<TextBlock Grid.Row="1" Style="{StaticResource Title}" Text="Um wie viel Uhr"></TextBlock>
+			<TextBox x:Name="tbxTime" Grid.Row="2" Style="{StaticResource Time}" Text="" LostFocus="tbxTime_LostFocus"></TextBox>
+
+			<!-- Repeat -->
+			<TextBlock Grid.Row="3" Style="{StaticResource Title}" Text="Wie oft"></TextBlock>
+
+			<StackPanel Grid.Row="4" Style="{StaticResource StretchM10}">
+				<Border Style="{StaticResource NoBorderRdb}">
+					<RadioButton x:Name="rdbNoRepeat" GroupName="Repeat" Checked="RadioButtonInterval_Changed">
+						<TextBlock Text="einmalig"></TextBlock>
+					</RadioButton>
+				</Border>
+
+				<Border Style="{StaticResource NoBorderRdb}">
+					<RadioButton x:Name="rdbRepeat"  GroupName="Repeat" Checked="RadioButtonInterval_Changed">
+						<StackPanel>
+							<TextBlock Text="mehrmals"></TextBlock>
+
+							<StackPanel x:Name="spIntervalA" Orientation="Horizontal">
+								<StackPanel>
+									<RadioButton x:Name="rdbRepeatDay" GroupName="DWM">
+										<TextBlock Text="Tag"></TextBlock>
+									</RadioButton>
+									<RadioButton x:Name="rdbRepeatWeek" GroupName="DWM">
+										<TextBlock Text="Woche"></TextBlock>
+									</RadioButton>
+									<RadioButton x:Name="rdbRepeatMonth" GroupName="DWM">
+										<TextBlock Text="Monat"></TextBlock>
+									</RadioButton>
+								</StackPanel>
+
+								<Border Style="{StaticResource bL1}">
+									<StackPanel>
+										<RadioButton x:Name="rdbRepeatDaily" GroupName="DWM" Click="RadioButtonInterval_Changed">
+											<TextBlock Text="täglich"></TextBlock>
+										</RadioButton>
+										<RadioButton x:Name="rdbRepeatWeekly" GroupName="DWM">
+											<TextBlock Text="wöchentlich"></TextBlock>
+										</RadioButton>
+										<RadioButton x:Name="rdbRepeatMonthly" GroupName="DWM">
+											<TextBlock Text="monatlich"></TextBlock>
+										</RadioButton>
+									</StackPanel>
+								</Border>
+							</StackPanel>
+							<StackPanel x:Name="spIntervalB" Orientation="Horizontal">
+								<TextBox x:Name="tbxInterval" Style="{StaticResource Interval}"></TextBox>
+								<TextBlock Text="Intervall" VerticalAlignment="Center"></TextBlock>
+							</StackPanel>
+						</StackPanel>
+					</RadioButton>
+				</Border>
+			</StackPanel>
+		</Grid>
+
+		<StackPanel Grid.Row="3" Grid.Column="2" Style="{StaticResource Stretch}">
+			<TextBlock Text="Wohin" Style="{StaticResource Title}"></TextBlock>
+			<TextBox x:Name="tbxTarget" Style="{StaticResource TargetPath}" 
+					 TextChanged="Target_TextChanged" GotFocus="tbxTarget_GotFocus"
+					 Text=""></TextBox>
+		</StackPanel>
+	</Grid>
+</Window>
